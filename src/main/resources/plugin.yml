@@ -1,0 +1,5 @@
+main: fr.will33.rone01.coins.CoinsPlugin
+name: Coins
+version: ${project.version}
+api-version: "1.13"
+website: "https://www.elesia.org"

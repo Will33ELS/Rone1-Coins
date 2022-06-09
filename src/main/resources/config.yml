@@ -1,0 +1,11 @@
+database:
+  sqllite:
+    enable: true
+    filename:
+  mysql:
+    enable: false
+    host: ""
+    database: ""
+    username: ""
+    password: ""
+    tablePrefix: ""
