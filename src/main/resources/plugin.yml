@@ -3,3 +3,5 @@ name: Coins
 version: ${project.version}
 api-version: "1.13"
 website: "https://www.elesia.org"
+commands:
+  coins:

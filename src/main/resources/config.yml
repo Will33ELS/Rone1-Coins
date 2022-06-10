@@ -1,7 +1,7 @@
 database:
   sqllite:
     enable: true
-    filename:
+    filename: "database.db"
   mysql:
     enable: false
     host: ""
@@ -9,3 +9,20 @@ database:
     username: ""
     password: ""
     tablePrefix: ""
+config:
+  startBalance: 2500
+  takeCoinsOnDeath: 25
+  newDay: 15
+message:
+  help:
+    balance: "&e/coins balance"
+    pay: "&e/coins pay <player>"
+    baltop: "&e/coins baltop"
+  balance: "&7Your balance: &e{balance}"
+  pay:
+    amountIsNotANumber: "&cThe amount must be a number!"
+    amountNotNegative: "&cThe amount must be greater than 0!"
+    noEnoughCoins: "&cYou don't have enough coins"
+    received: "&aYou have received &e{amount} coins"
+    send: "&aYou have send &e{amount} &acoins"
+  top: "&3- &e{pseudo} &7> &6{balance} coins"

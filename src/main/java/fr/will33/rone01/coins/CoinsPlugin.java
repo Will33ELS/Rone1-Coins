@@ -1,9 +1,13 @@
 package fr.will33.rone01.coins;
 
 import fr.will33.rone01.coins.api.ISQLBridge;
+import fr.will33.rone01.coins.commands.CoinsCommand;
 import fr.will33.rone01.coins.database.MySQLDatabase;
 import fr.will33.rone01.coins.database.SQLLiteDatabase;
+import fr.will33.rone01.coins.listener.PlayerListener;
 import fr.will33.rone01.coins.models.CoinsPlayer;
+import fr.will33.rone01.coins.stockage.CoinsStockage;
+import fr.will33.rone01.coins.task.TimeDetectTask;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +20,7 @@ public class CoinsPlugin extends JavaPlugin {
 
     private ISQLBridge sqlBridge;
     private final Map<Player, CoinsPlayer> coinsPlayers = new HashMap<>();
+    private CoinsStockage coinsStockage;
 
     @Override
     public void onEnable() {
@@ -37,7 +42,19 @@ public class CoinsPlugin extends JavaPlugin {
             throw new RuntimeException("No database is configured!");
         }
 
+        this.coinsStockage = new CoinsStockage();
 
+        Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+        this.getCommand("coins").setExecutor(new CoinsCommand());
+        new TimeDetectTask().runTaskTimer(this, 0, 1);
+    }
+
+    /**
+     * Get {@link CoinsStockage} instance
+     * @return
+     */
+    public CoinsStockage getCoinsStockage() {
+        return coinsStockage;
     }
 
     /**
