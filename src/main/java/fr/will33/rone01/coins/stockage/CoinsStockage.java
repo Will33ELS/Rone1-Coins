@@ -86,7 +86,7 @@ public class CoinsStockage {
      */
     public void addAmount(UUID uuid, long amount){
         try{
-            PreparedStatement preparedStatement = this.sqlBridge.getConnection().prepareStatement("UPDATE " + this.prefixTable + "coinsPlayer SET balance += ? WHERE uuid = ?");
+            PreparedStatement preparedStatement = this.sqlBridge.getConnection().prepareStatement("UPDATE " + this.prefixTable + "coinsPlayer SET balance = balance + ? WHERE uuid = ?");
             preparedStatement.setLong(1, amount);
             preparedStatement.setString(2, uuid.toString());
             preparedStatement.executeUpdate();
