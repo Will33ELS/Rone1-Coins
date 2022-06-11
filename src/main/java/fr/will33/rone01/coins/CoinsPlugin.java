@@ -3,6 +3,8 @@ package fr.will33.rone01.coins;
 import fr.will33.rone01.coins.api.ISQLBridge;
 import fr.will33.rone01.coins.commands.BaltopCommand;
 import fr.will33.rone01.coins.commands.CoinsCommand;
+import fr.will33.rone01.coins.commands.ConfirmCommand;
+import fr.will33.rone01.coins.commands.PayCommand;
 import fr.will33.rone01.coins.database.MySQLDatabase;
 import fr.will33.rone01.coins.database.SQLLiteDatabase;
 import fr.will33.rone01.coins.listener.PlayerListener;
@@ -21,6 +23,7 @@ public class CoinsPlugin extends JavaPlugin {
 
     private ISQLBridge sqlBridge;
     private final Map<Player, CoinsPlayer> coinsPlayers = new HashMap<>();
+    private final Map<Player, Runnable> confirm = new HashMap<>();
     private CoinsStockage coinsStockage;
 
     @Override
@@ -48,6 +51,8 @@ public class CoinsPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
         this.getCommand("baltop").setExecutor(new BaltopCommand());
         this.getCommand("coins").setExecutor(new CoinsCommand());
+        this.getCommand("confirm").setExecutor(new ConfirmCommand());
+        this.getCommand("pay").setExecutor(new PayCommand());
         new TimeDetectTask().runTaskTimer(this, 0, 1);
     }
 
@@ -65,6 +70,14 @@ public class CoinsPlugin extends JavaPlugin {
      */
     public Map<Player, CoinsPlayer> getCoinsPlayers() {
         return coinsPlayers;
+    }
+
+    /**
+     * Get confirm
+     * @return
+     */
+    public Map<Player, Runnable> getConfirm() {
+        return confirm;
     }
 
     /**

@@ -12,6 +12,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+
 public class CoinsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
@@ -23,7 +25,7 @@ public class CoinsCommand implements CommandExecutor {
                 if(strings[0].equalsIgnoreCase("balance")){
                     CoinsBalanceSubCommand.balance(coinsPlayer);
                 } else if(strings[0].equalsIgnoreCase("pay")){
-                    CoinsPaySubCommand.pay(coinsPlayer, strings);
+                    CoinsPaySubCommand.pay(coinsPlayer, Arrays.copyOfRange(strings, 1, strings.length));
                 } else if(strings[0].equalsIgnoreCase("baltop")){
                     CoinsBaltopSubCommand.baltop(player);
                 } else {

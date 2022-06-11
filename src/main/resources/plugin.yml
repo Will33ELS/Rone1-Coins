@@ -6,3 +6,5 @@ website: "https://www.elesia.org"
 commands:
   coins:
   baltop:
+  confirm:
+  pay:

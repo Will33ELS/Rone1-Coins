@@ -26,4 +26,7 @@ message:
     received: "&aYou have received &e{amount} coins. Your new balance {new_balance}"
     send: "&aYou have send &e{amount} &acoins"
     playerNotExit: "&cThis player has never played on the server!"
+    confirm: "&eTo validate the transaction use the command /confirm"
+  confirm:
+    noConfirm: "&cYou have no confirmation pending"
   top: "&3- &e{pseudo} &7> &6{balance} coins"
