@@ -64,7 +64,8 @@ public class CoinsPaySubCommand {
         origin.takeCoins(amount);
         instance.getCoinsStockage().save(origin);
         origin.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("message.pay.send")
-                .replace("{amount}", StringUtil.formatCurrency(amount))));
+                        .replace("{amount}", StringUtil.formatCurrency(amount)))
+                .replace("{new_balance}", StringUtil.formatCurrency(origin.getCoins())));
     }
 
 }

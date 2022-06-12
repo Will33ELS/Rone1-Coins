@@ -1,10 +1,7 @@
 package fr.will33.rone01.coins;
 
 import fr.will33.rone01.coins.api.ISQLBridge;
-import fr.will33.rone01.coins.commands.BaltopCommand;
-import fr.will33.rone01.coins.commands.CoinsCommand;
-import fr.will33.rone01.coins.commands.ConfirmCommand;
-import fr.will33.rone01.coins.commands.PayCommand;
+import fr.will33.rone01.coins.commands.*;
 import fr.will33.rone01.coins.database.MySQLDatabase;
 import fr.will33.rone01.coins.database.SQLLiteDatabase;
 import fr.will33.rone01.coins.listener.PlayerListener;
@@ -49,10 +46,13 @@ public class CoinsPlugin extends JavaPlugin {
         this.coinsStockage = new CoinsStockage();
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+
+        this.getCommand("balance").setExecutor(new BalanceSubCommand());
         this.getCommand("baltop").setExecutor(new BaltopCommand());
         this.getCommand("coins").setExecutor(new CoinsCommand());
         this.getCommand("confirm").setExecutor(new ConfirmCommand());
         this.getCommand("pay").setExecutor(new PayCommand());
+
         new TimeDetectTask().runTaskTimer(this, 0, 1);
     }
 
